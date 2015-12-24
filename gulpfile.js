@@ -103,3 +103,5 @@ gulp.task('test-dist-minified', function (done) {
 gulp.task('default', function () {
   runSequence('process-all', 'watch');
 });
+
+gulp.task('list', require('gulp-task-listing'))
