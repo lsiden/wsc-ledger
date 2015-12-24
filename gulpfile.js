@@ -104,4 +104,4 @@ gulp.task('default', function () {
   runSequence('process-all', 'watch');
 });
 
-gulp.task('list', require('gulp-task-listing'))
+gulp.task('list', require('gulp-task-listing'));
