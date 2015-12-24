@@ -7,6 +7,7 @@ var path = require('path');
 var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
+var templateCache = require('gulp-angular-templatecache');
 
 /**
  * File patterns
@@ -41,6 +42,12 @@ gulp.task('build', function() {
     .pipe(uglify())
     .pipe(rename('wsc-ledger.min.js'))
     .pipe(gulp.dest('./dist'));
+
+  gulp.src(path.join(sourceDirectory, '/**/*.tpl.html'))
+  .pipe(templateCache({
+    // module: 'wsc-ledger.directives'
+  }))
+  .pipe(gulp.dest('./dist'));
 });
 
 /**

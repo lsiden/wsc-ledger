@@ -20,7 +20,8 @@ module.exports = function(config) {
       'karma-phantomjs-launcher',
       'karma-jquery',
       'karma-chai-jquery',
-      'karma-spec-reporter'
+      'karma-spec-reporter',
+      'karma-ng-html2js-preprocessor'
     ],
 
     // list of files / patterns to load in the browser
@@ -30,6 +31,7 @@ module.exports = function(config) {
       'bower/angular-mocks/angular-mocks.js',
       'modules/**/*.module.js',
       'modules/**/*.js',
+      'modules/**/*.tpl.html',
       'test/unit/**/*.js'
     ],
 
@@ -42,6 +44,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+      'modules/**/*.tpl.html': ['ng-html2js']
+    },
+
+    ngHtml2JsPreprocessor: {
+      // moduleName: 'wsc-ledger.directives'
+      moduleName: 'templates'
     },
 
 
