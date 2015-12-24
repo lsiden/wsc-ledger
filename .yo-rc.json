@@ -1,0 +1,30 @@
+{
+  "generator-angular-package": {
+    "props": {
+      "author": {
+        "name": "Larry Siden",
+        "email": "lsiden@gmail.com"
+      },
+      "yourModule": {
+        "original": "wsc-ledger",
+        "camelized": "wscLedger",
+        "dasherized": "wsc-ledger",
+        "slugified": "wsc-ledger",
+        "parts": [
+          "wsc",
+          "ledger"
+        ]
+      },
+      "includeModuleDirectives": true,
+      "includeModuleFilters": true,
+      "includeModuleServices": false,
+      "includeModuleControllers": false,
+      "includeAngularModuleResource": false,
+      "includeAngularModuleCookies": false,
+      "includeAngularModuleSanitize": true,
+      "moduleDirectory": "modules/wsc-ledger",
+      "moduleUnitTestDirectory": "test/unit/wsc-ledger",
+      "moduleUnitE2eDirectory": "test/e2e/wsc-ledger"
+    }
+  }
+}
