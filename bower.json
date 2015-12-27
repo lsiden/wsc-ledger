@@ -9,6 +9,11 @@
       "email": "lsiden@gmail.com"
     }
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lsiden/wsc-ng-ledger"
+  },
+  "license": "MIT",
   "main": [
     "dist/wsc-ledger.js",
     "dist/wsc-ledger.css"
