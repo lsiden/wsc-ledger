@@ -10,6 +10,7 @@ var jshint = require('gulp-jshint');
 var templateCache = require('gulp-angular-templatecache');
 var scss = require('gulp-scss');
 var concatCss = require('gulp-concat-css');
+var eventStream = require('event-stream')
 
 /**
  * File patterns
@@ -45,26 +46,25 @@ var lintFiles = [
   'karma-*.conf.js'
 ].concat(sourceFiles);
 
-gulp.task('build', function() {
-  gulp.src(sourceFiles)
-    .pipe(plumber())
-    .pipe(concat('wsc-ledger.js'))
-    .pipe(gulp.dest('./dist/'))
-    .pipe(uglify())
-    .pipe(rename('wsc-ledger.min.js'))
-    .pipe(gulp.dest('./dist'));
-});
-
-gulp.task('build-template-cache', function() {
-  gulp.src(templates)
+function getTemplateCache() {
+  return gulp.src(templates)
   .pipe(templateCache({
     module: 'wsc-ledger.directives'
   }))
+}
+
+gulp.task('build', function() {
+  return eventStream.merge(gulp.src(sourceFiles), getTemplateCache())
+  .pipe(plumber())
+  .pipe(concat('wsc-ledger.js'))
+  .pipe(gulp.dest('./dist/'))
+  .pipe(uglify())
+  .pipe(rename('wsc-ledger.min.js'))
   .pipe(gulp.dest('./dist'));
-})
+});
 
 gulp.task('build-stylesheets', function() {
-  gulp.src(stylesheets)
+  return gulp.src(stylesheets)
   // .pipe(scss({ bundleExec: true }))
   .pipe(scss())
   .pipe(concatCss('wsc-ledger.css'))
@@ -75,7 +75,7 @@ gulp.task('build-stylesheets', function() {
  * Process
  */
 gulp.task('process-all', function (done) {
-  runSequence('build-template-cache', 'jshint', 'test-src', 'build', done);
+  return runSequence('jshint', 'test-src', 'build', done);
 });
 
 /**
