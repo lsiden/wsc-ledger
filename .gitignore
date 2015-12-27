@@ -5,6 +5,7 @@
 .idea
 .project
 .settings
+.*-cache/
 
 # Ignore node stuff
 node_modules/
@@ -16,3 +17,6 @@ libpeerconnection.log
 
 # Bower components
 bower
+
+*.sublime-project
+*.sublime-workspace

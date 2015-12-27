@@ -1,4 +1,18 @@
-<wsc-ledger-item ng-repeat="item in vm.items">
-  <wsc-ledger-item-descr></wsc-ledger-item-descr>
-  <wsc-ledger-item-amount></wsc-ledger-item-amount>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th class="desc">Item</th>
+      <th class="amount">Amount</th>
+    </tr>
+  </thead>
+  <tbody class="items">
+    <tr ng-repeat="item in items">
+      <td class="desc">
+        <wsc-ledger-item-desc value="item.desc"></wsc-ledger-item-desc>
+      </td>
+      <td class="amount">
+        <wsc-ledger-item-amount value="item.amount"></wsc-ledger-item-amount>
+      </td>
+    </tr>
+  </tbody>
+</table>

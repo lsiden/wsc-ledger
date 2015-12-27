@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <link rel="stylesheet" href="dist/wsc-ledger.css">
+  <script src="./bower/angular/angular.js"></script>
+  <script src="./dist/wsc-ledger.js"></script>
+  <script src="./dist/templates.js"></script>
+  <script>
+  angular.module("app", ['wsc-ledger.directives'])
+  .run(function($rootScope) {
+    $rootScope.items = [
+    {
+      desc: 'Item 1',
+      amount: 1000
+    },
+    {
+      desc: 'Item 2',
+      amount: 2000
+    },
+    {
+      desc: 'Item 3',
+      amount: 3000
+    }
+    ]
+    $rootScope.result = {}
+  })
+  </script>
+  <style>
+    wsc-ledger {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <wsc-ledger items="items"></wsc-ledger>
+</body>
+</html>

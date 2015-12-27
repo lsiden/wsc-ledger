@@ -8,6 +8,8 @@ var plumber = require('gulp-plumber');
 var runSequence = require('run-sequence');
 var jshint = require('gulp-jshint');
 var templateCache = require('gulp-angular-templatecache');
+var scss = require('gulp-scss');
+var concatCss = require('gulp-concat-css');
 
 /**
  * File patterns
@@ -28,6 +30,15 @@ var sourceFiles = [
   path.join(sourceDirectory, '/**/*.js')
 ];
 
+var templates = [
+  path.join(sourceDirectory, '/**/*.tpl.html')
+]
+
+var stylesheets = [
+  path.join(sourceDirectory, '/**/*.css'),
+  path.join(sourceDirectory, '/**/*.scss')
+]
+
 var lintFiles = [
   'gulpfile.js',
   // Karma configuration
@@ -42,19 +53,29 @@ gulp.task('build', function() {
     .pipe(uglify())
     .pipe(rename('wsc-ledger.min.js'))
     .pipe(gulp.dest('./dist'));
+});
 
-  gulp.src(path.join(sourceDirectory, '/**/*.tpl.html'))
+gulp.task('build-template-cache', function() {
+  gulp.src(templates)
   .pipe(templateCache({
-    // module: 'wsc-ledger.directives'
+    module: 'wsc-ledger.directives'
   }))
   .pipe(gulp.dest('./dist'));
-});
+})
+
+gulp.task('build-stylesheets', function() {
+  gulp.src(stylesheets)
+  // .pipe(scss({ bundleExec: true }))
+  .pipe(scss())
+  .pipe(concatCss('wsc-ledger.css'))
+  .pipe(gulp.dest('./dist'))
+})
 
 /**
  * Process
  */
 gulp.task('process-all', function (done) {
-  runSequence('jshint', 'test-src', 'build', done);
+  runSequence('build-template-cache', 'jshint', 'test-src', 'build', done);
 });
 
 /**
@@ -63,7 +84,8 @@ gulp.task('process-all', function (done) {
 gulp.task('watch', function () {
 
   // Watch JavaScript files
-  gulp.watch(sourceFiles, ['process-all']);
+  gulp.watch([sourceFiles, templates], ['process-all']);
+  gulp.watch([stylesheets], ['build-stylesheets']);
 });
 
 /**
@@ -108,7 +130,7 @@ gulp.task('test-dist-minified', function (done) {
 });
 
 gulp.task('default', function () {
-  runSequence('process-all', 'watch');
+  runSequence('process-all', 'build-stylesheets', 'watch');
 });
 
 gulp.task('list', require('gulp-task-listing'));

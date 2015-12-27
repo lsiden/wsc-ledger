@@ -1,18 +1,24 @@
 {
-  "name": "wsc-ledger",
+  "name": "wsc-ng-ledger",
+  "description": "Bare-bones accounting ledger of items and their associated costs for Angular projects",
+  "keywords": ["accounting", "ledger", "table", "angular", "ng"],
   "version": "0.1.0",
   "authors": [
     {
-      "name": "Larry Siden",
+      "name": "Lawerence Siden",
       "email": "lsiden@gmail.com"
     }
   ],
-  "main": ["dist/wsc-ledger.js"],
+  "main": [
+    "dist/wsc-ledger.js",
+    "dist/wsc-ledger.css"
+  ],
   "ignore": [
-    "src",
-    "test",
-    "Gruntfile.js",
-    "**/.*"
+    "*.*",
+    "bower",
+    "modules",
+    "node_modules",
+    "test"
   ],
   "dependencies": {},
   "devDependencies": {

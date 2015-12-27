@@ -1,0 +1,31 @@
+wsc-ledger {
+
+  wsc-ledger-item-amount, wsc-ledger-item-desc {
+    span, input {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+
+  wsc-ledger-item-amount {
+    span, input {
+      text-align: right !important;
+    }
+  }
+
+  table {
+    width: 100%;
+
+    td.amount {
+      width: 8em;
+    }
+
+    th.desc {
+      text-align: left;
+    }
+
+    th.amount {
+      text-align: right;
+    }
+  }
+}

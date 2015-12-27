@@ -1,0 +1,28 @@
+wsc-ledger wsc-ledger-item-amount span,
+wsc-ledger wsc-ledger-item-amount input,
+wsc-ledger wsc-ledger-item-desc span,
+wsc-ledger wsc-ledger-item-desc input {
+  width: 100%;
+  display: inline-block;
+}
+
+wsc-ledger wsc-ledger-item-amount span,
+wsc-ledger wsc-ledger-item-amount input {
+  text-align: right !important;
+}
+
+wsc-ledger table {
+  width: 100%;
+}
+
+wsc-ledger table td.amount {
+  width: 8em;
+}
+
+wsc-ledger table th.desc {
+  text-align: left;
+}
+
+wsc-ledger table th.amount {
+  text-align: right;
+}
