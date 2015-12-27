@@ -12,8 +12,6 @@ and to provide a button to add new items.
 
 ## Usage
 
-Include ./bower_components/wsc-ng-ledger/dist/wsc-ledger.js.
-
 See [example.html](https://github.com/lsiden/wsc-ng-ledger/blob/master/example.html).
 
 To edit, user clicks on a cell.  
@@ -25,6 +23,11 @@ To abandon an edit and revert to the original value, user hits ESC.
 ## Installation
 
     bower install wsc-ledger
+
+In your HTML file
+
+    <script src="./bower_components/wsc-ng-ledger/dist/wsc-ledger.js"></script>
+    <script src="./bower_components/wsc-ng-ledger/dist/templates.js"></script>
 
 ## Styling
 
