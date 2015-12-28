@@ -14,17 +14,15 @@
     });
 
     // Modules
-    
     angular.module('wsc-ledger.directives', []);
-    
     angular.module('wsc-ledger.filters', []);
-    
+    angular.module('wsc-ledger.services', []);
     angular.module('wsc-ledger',
       [
       'wsc-ledger.config',
       'wsc-ledger.directives',
-      'wsc-ledger.filters',
-      'ngSanitize'
+      'wsc-ledger.services',
+      'wsc-ledger.filters'
       ]);
 
   })(angular);
