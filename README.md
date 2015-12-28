@@ -28,11 +28,18 @@ In your HTML file
 
     <script src="./bower_components/wsc-ng-ledger/dist/wsc-ledger.js"></script>
 
+or
+
+    <script src="./bower_components/wsc-ng-ledger/dist/wsc-ledger.min.js"></script>
+
 ## Styling
 
 wsc-ledger provides a minimal stylesheet,
 dist/wsc-ledger.css
 that you may link to
+
+    <link rel="stylesheet" href="dist/wsc-ledger.css">
+
 or use as a template to write your own.
 
 In order to keep wsc-ledger as independent as possible,

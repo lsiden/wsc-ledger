@@ -31,6 +31,61 @@
 (function() {
   'use strict';
 
+  angular.module('wsc-ledger.directives')
+  .directive('wscLedgerItemAmount', function(wscLedgerHelpers) {
+    return {
+      templateUrl: 'modules/wsc-ledger/directives/wsc-ledger-item-amount.tpl.html',
+      scope: {
+        value: '='
+      },
+      link: wscLedgerHelpers.link
+    }
+  })
+
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('wsc-ledger.directives')
+  .directive('wscLedgerItemDesc', function(wscLedgerHelpers) {
+    return {
+      templateUrl: 'modules/wsc-ledger/directives/wsc-ledger-item-desc.tpl.html',
+      scope: {
+        value: '='
+      },
+      link: wscLedgerHelpers.link
+    }
+  })
+
+})();
+
+angular.module("wsc-ledger.directives").run(["$templateCache", function($templateCache) {$templateCache.put("wsc-ledger/directives/wsc-ledger-item-amount.tpl.html","<span class=\"value\" ng-show=\"!editing\" ng-click=\"enableEditor()\" title=\"Click to edit.\">{{ value | validNumber | currency }}</span>\n<input type=\"number\" ng-model=\"value\" ng-model-options=\"{ updateOn: \'blur\' }\" ng-show=\"editing\">\n");
+$templateCache.put("wsc-ledger/directives/wsc-ledger-item-desc.tpl.html","<span class=\"value\" ng-bind=\"value\" ng-show=\"!editing\" ng-click=\"enableEditor()\" title=\"Click to edit.\"></span>\n<input type=\"text\" ng-model=\"value\" ng-model-options=\"{ updateOn: \'blur\' }\" ng-show=\"editing\">\n");
+$templateCache.put("wsc-ledger/directives/wsc-ledger.tpl.html","<table>\n  <thead>\n    <tr>\n      <th class=\"desc\">Item</th>\n      <th class=\"amount\">Amount</th>\n    </tr>\n  </thead>\n  <tbody class=\"items\">\n    <tr ng-repeat=\"item in items\">\n      <td class=\"desc\">\n        <wsc-ledger-item-desc value=\"item.desc\"></wsc-ledger-item-desc>\n      </td>\n      <td class=\"amount\">\n        <wsc-ledger-item-amount value=\"item.amount\"></wsc-ledger-item-amount>\n      </td>\n    </tr>\n  </tbody>\n</table>\n");}]);
+(function() {
+  'use strict';
+
+  angular.module('wsc-ledger.directives')
+  .directive('wscLedger', function() {
+    return {
+      scope: {
+        items: '='
+      },
+      templateUrl: 'modules/wsc-ledger/directives/wsc-ledger.tpl.html'
+    }
+  })
+  .filter('validNumber', function() {
+    return function(val) {
+      return isNaN(val) ? 0 : val
+    }
+  })
+
+})();
+
+(function() {
+  'use strict';
+
   angular.module('wsc-ledger.filters')
   .filter('validNumber', function() {
     return function(val) {
@@ -84,59 +139,4 @@
     }
 
   })
-})();
-
-angular.module("wsc-ledger.directives").run(["$templateCache", function($templateCache) {$templateCache.put("wsc-ledger/directives/wsc-ledger-item-amount.tpl.html","<span class=\"value\" ng-show=\"!editing\" ng-click=\"enableEditor()\" title=\"Click to edit.\">{{ value | validNumber | currency }}</span>\n<input type=\"number\" ng-model=\"value\" ng-model-options=\"{ updateOn: \'blur\' }\" ng-show=\"editing\">\n");
-$templateCache.put("wsc-ledger/directives/wsc-ledger-item-desc.tpl.html","<span class=\"value\" ng-bind=\"value\" ng-show=\"!editing\" ng-click=\"enableEditor()\" title=\"Click to edit.\"></span>\n<input type=\"text\" ng-model=\"value\" ng-model-options=\"{ updateOn: \'blur\' }\" ng-show=\"editing\">\n");
-$templateCache.put("wsc-ledger/directives/wsc-ledger.tpl.html","<table>\n  <thead>\n    <tr>\n      <th class=\"desc\">Item</th>\n      <th class=\"amount\">Amount</th>\n    </tr>\n  </thead>\n  <tbody class=\"items\">\n    <tr ng-repeat=\"item in items\">\n      <td class=\"desc\">\n        <wsc-ledger-item-desc value=\"item.desc\"></wsc-ledger-item-desc>\n      </td>\n      <td class=\"amount\">\n        <wsc-ledger-item-amount value=\"item.amount\"></wsc-ledger-item-amount>\n      </td>\n    </tr>\n  </tbody>\n</table>\n");}]);
-(function() {
-  'use strict';
-
-  angular.module('wsc-ledger.directives')
-  .directive('wscLedgerItemAmount', function(wscLedgerHelpers) {
-    return {
-      templateUrl: 'modules/wsc-ledger/directives/wsc-ledger-item-amount.tpl.html',
-      scope: {
-        value: '='
-      },
-      link: wscLedgerHelpers.link
-    }
-  })
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('wsc-ledger.directives')
-  .directive('wscLedgerItemDesc', function(wscLedgerHelpers) {
-    return {
-      templateUrl: 'modules/wsc-ledger/directives/wsc-ledger-item-desc.tpl.html',
-      scope: {
-        value: '='
-      },
-      link: wscLedgerHelpers.link
-    }
-  })
-
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('wsc-ledger.directives')
-  .directive('wscLedger', function() {
-    return {
-      scope: {
-        items: '='
-      },
-      templateUrl: 'modules/wsc-ledger/directives/wsc-ledger.tpl.html'
-    }
-  })
-  .filter('validNumber', function() {
-    return function(val) {
-      return isNaN(val) ? 0 : val
-    }
-  })
-
 })();
