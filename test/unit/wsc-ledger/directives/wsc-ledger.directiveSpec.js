@@ -8,7 +8,7 @@
 
   describe('wsc-ledger directive', function() {
 
-    beforeEach(module('wsc-ledger'))
+    beforeEach(module('wsc-components'))
 
     var el, scope, $compile
     var items = [
@@ -40,21 +40,21 @@
     })
 
     it('contains a row for each item', function() {
-      el.find('wsc-ledger-item-desc').length.should.equal(scope.items.length)
+      el.find('tbody.items tr').length.should.equal(scope.items.length)
     })
 
     it('displays each item description', function() {
-      var itemDescs = el.find('wsc-ledger-item-desc span')
-      angular.element(itemDescs[0]).html().should.equal('Item 1')
-      angular.element(itemDescs[1]).html().should.equal('Item 2')
-      angular.element(itemDescs[2]).html().should.equal('Item 3')
+      var itemDescs = el[0].querySelectorAll('tbody.items td.desc span')
+      angular.element(itemDescs[0]).text().should.equal('Item 1')
+      angular.element(itemDescs[1]).text().should.equal('Item 2')
+      angular.element(itemDescs[2]).text().should.equal('Item 3')
     })
 
     it('displays each item amount', function() {
-      var itemAmounts = el.find('wsc-ledger-item-amount span')
-      angular.element(itemAmounts[0]).html().should.equal('$1,000.00')
-      angular.element(itemAmounts[1]).html().should.equal('$2,000.00')
-      angular.element(itemAmounts[2]).html().should.equal('$3,000.00')
+      var itemAmounts = el[0].querySelectorAll('tbody.items td.amount span')
+      angular.element(itemAmounts[0]).text().should.equal('$1,000.00')
+      angular.element(itemAmounts[1]).text().should.equal('$2,000.00')
+      angular.element(itemAmounts[2]).text().should.equal('$3,000.00')
     })
 
   })

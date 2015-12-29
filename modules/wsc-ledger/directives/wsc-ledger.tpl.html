@@ -8,10 +8,10 @@
   <tbody class="items">
     <tr ng-repeat="item in items">
       <td class="desc">
-        <wsc-ledger-item-desc value="item.desc"></wsc-ledger-item-desc>
+        <wsc-inplace-editor value="item.desc"></wsc-inplace-editor>
       </td>
       <td class="amount">
-        <wsc-ledger-item-amount value="item.amount"></wsc-ledger-item-amount>
+        <wsc-inplace-editor value="item.amount" filterFn="validCurrency"></wsc-inplace-editor>
       </td>
     </tr>
   </tbody>
