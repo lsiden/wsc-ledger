@@ -13,15 +13,9 @@
   // Modules
   
   angular.module('wsc-inplace-editor.directives', []);
-  
-  
   angular.module('wsc-inplace-editor.filters', []);
-  
-  
   angular.module('wsc-inplace-editor.services', []);
-  
-  
-    angular.module('wsc-inplace-editor.controllers', []);
+  angular.module('wsc-inplace-editor.controllers', []);
   
   angular.module('wsc-inplace-editor',
       [
