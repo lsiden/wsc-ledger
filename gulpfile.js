@@ -49,7 +49,7 @@ var lintFiles = [
 function getTemplateCache() {
   return gulp.src(templates)
   .pipe(templateCache({
-    module: 'wsc-ledger.directives'
+    module: 'wsc-components.templates'
   }))
 }
 

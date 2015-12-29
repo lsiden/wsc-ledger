@@ -2,29 +2,30 @@
   "generator-angular-package": {
     "props": {
       "author": {
-        "name": "Larry Siden",
+        "name": "Lawrence Siden",
         "email": "lsiden@gmail.com"
       },
       "yourModule": {
-        "original": "wsc-ledger",
-        "camelized": "wscLedger",
-        "dasherized": "wsc-ledger",
-        "slugified": "wsc-ledger",
+        "original": "wsc-inplace-editor",
+        "camelized": "wscInplaceEditor",
+        "dasherized": "wsc-inplace-editor",
+        "slugified": "wsc-inplace-editor",
         "parts": [
           "wsc",
-          "ledger"
+          "inplace",
+          "editor"
         ]
       },
       "includeModuleDirectives": true,
       "includeModuleFilters": true,
-      "includeModuleServices": false,
-      "includeModuleControllers": false,
+      "includeModuleServices": true,
+      "includeModuleControllers": true,
       "includeAngularModuleResource": false,
       "includeAngularModuleCookies": false,
       "includeAngularModuleSanitize": true,
-      "moduleDirectory": "modules/wsc-ledger",
-      "moduleUnitTestDirectory": "test/unit/wsc-ledger",
-      "moduleUnitE2eDirectory": "test/e2e/wsc-ledger"
+      "moduleDirectory": "modules/wsc-inplace-editor",
+      "moduleUnitTestDirectory": "test/unit/wsc-inplace-editor",
+      "moduleUnitE2eDirectory": "test/e2e/wsc-inplace-editor"
     }
   }
 }

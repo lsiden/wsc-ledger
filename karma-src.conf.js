@@ -48,7 +48,7 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
-      moduleName: 'wsc-ledger.directives'
+      moduleName: 'wsc-components.templates'
     },
 
 
